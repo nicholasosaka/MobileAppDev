@@ -40,4 +40,8 @@ class User implements Comparable<User>{
 	private int getAge() {
 		return age;
 	}
+
+	public String getState() {
+		return state;
+	}
 }
