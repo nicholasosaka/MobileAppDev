@@ -1,5 +1,7 @@
 package edu.uncc.cci.mobileapps;
 
+import java.util.*;
+
 public class MainPart2 {
     /*
     * Question 2:
@@ -13,8 +15,29 @@ public class MainPart2 {
     public static void main(String[] args) {
 
         //example on how to access the Data.users array.
-        for (String str : Data.users) {
-            System.out.println(str);
-        }
+	    List<User> users = new ArrayList<>();
+	    for (String str : Data.users) {
+		    users.add(new User(str));
+	    }
+
+	    //maps state to integer of how many users are in each state.
+	    Map<String, Integer> map = new HashMap<String, Integer>();
+
+	    //count users
+	    for(User user : users){ //for each user
+	    	if(map.containsKey(user.getState())){   //if the map already contains their state
+	    		int currVal = map.get(user.getState()); //grab current value and add incremented value to map
+	    		map.put(user.getState(), ++currVal);
+		    } else {
+			    map.put(user.getState(), 1);    //add state to map
+		    }
+	    }
+
+	    //print map
+	    Iterator statesIterator = map.entrySet().iterator();
+	    while(statesIterator.hasNext()){
+		    Map.Entry e = (Map.Entry) statesIterator.next();
+		    System.out.println(e.getKey() + "\t" + e.getValue());
+	    }
     }
 }
