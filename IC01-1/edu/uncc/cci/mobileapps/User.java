@@ -1,5 +1,7 @@
 package edu.uncc.cci.mobileapps;
 
+import java.util.Objects;
+
 class User implements Comparable<User>{
 	private String fname, lname, email, gender, city, state;
 	private int age;
@@ -28,6 +30,25 @@ class User implements Comparable<User>{
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return getAge() == user.getAge() &&
+				getFname().equals(user.getFname()) &&
+				getLname().equals(user.getLname()) &&
+				getEmail().equals(user.getEmail()) &&
+				getGender().equals(user.getGender()) &&
+				getCity().equals(user.getCity()) &&
+				getState().equals(user.getState());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getFname(), getLname(), getEmail(), getGender(), getCity(), getState(), getAge());
+	}
+
+	@Override
 	public int compareTo(User user) {
 		return (user.getAge() - this.getAge());
 	}
@@ -37,11 +58,31 @@ class User implements Comparable<User>{
 		return fname + " " + lname + ", " + age + ", " + email + ", " + gender + ", " + city + ", " + state;
 	}
 
-	private int getAge() {
-		return age;
+	public String getFname() {
+		return fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getCity() {
+		return city;
 	}
 
 	public String getState() {
 		return state;
+	}
+
+	public int getAge() {
+		return age;
 	}
 }
