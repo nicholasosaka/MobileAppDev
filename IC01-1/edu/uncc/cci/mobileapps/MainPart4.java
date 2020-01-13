@@ -26,7 +26,7 @@ public class MainPart4{
 
     public static void main(String[] args) {
 
-    	Map<Integer, StoreItem> items = new HashMap<Integer, StoreItem>();
+    	Map<Integer, StoreItem> items = new HashMap<>();
 
 	    for(String str : Data.items){
 		    StoreItem item = new StoreItem(str);
@@ -34,7 +34,7 @@ public class MainPart4{
 		    items.put(item.getId(), item);
 	    }
 
-	    Map<Integer, Integer> cart = new HashMap<Integer, Integer>();
+	    Map<Integer, Integer> cart = new HashMap<>();
 
 	    for(String str : Data.shoppingCart){
 	    	String[] tokenized = str.split(","); //tokenize shopping cart strings
@@ -60,7 +60,7 @@ public class MainPart4{
 		    int ID = (int) entry.getKey();
 		    int quantity = (int) entry.getValue();
 
-	    	//get item from id
+		    //get item from id
 		    StoreItem item = items.get(ID);
 		    int cost = item.getPrice() * quantity;
 		    System.out.format("%-5d%-15s%-16d$%-24d%n", item.getId(), item.getName(), quantity, cost);

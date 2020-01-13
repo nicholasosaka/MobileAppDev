@@ -17,7 +17,7 @@ public class MainPart3 {
     public static void main(String[] args) {
 
     	//initialization
-	    Set<User> users = new HashSet<User>();
+	    Set<User> users = new HashSet<>();
 	    Set<User> otherUsers = new HashSet<>();
 
 
@@ -31,7 +31,7 @@ public class MainPart3 {
 	    }
 
 	    //set to contain users from both sets
-	    Set<User> both = new HashSet<User>();
+	    Set<User> both = new HashSet<>();
 
 	    for(User u : users){
 	    	if(otherUsers.contains(u)){ //if otherUsers contains a given user from the users set, it must be bidirectional.
