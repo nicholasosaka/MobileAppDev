@@ -1,7 +1,6 @@
 package edu.uncc.cci.mobileapps;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class MainPart3 {
@@ -42,9 +41,7 @@ public class MainPart3 {
 
 
 	    System.out.println("Users that exist in both lists:");
-	    Iterator<User> iterator = both.iterator();
-	    while(iterator.hasNext()){
-	    	User u = (User) iterator.next();
+	    for (User u : both) {
 		    System.out.println(u);
 	    }
 

@@ -3,7 +3,6 @@ package edu.uncc.cci.mobileapps;
 //import java.util.HashMap;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class MainPart4{
@@ -54,14 +53,12 @@ public class MainPart4{
 	    System.out.format("%-5s%-15s%-16s%-24s%n", "ID", "NAME", "QUANTITY", "PRICE * QUANTITY");
 
 	    //map -> entry set -> iterator
-	    Iterator<Map.Entry<Integer, Integer>> iterator = cart.entrySet().iterator();
 
-	    while(iterator.hasNext()){
-	    	//grab each entry
-	    	Map.Entry entry = iterator.next();
-	    	//seperate key/values
-	    	int ID = (int) entry.getKey();
-	    	int quantity = (int) entry.getValue();
+	    for (Map.Entry entry : cart.entrySet()) {
+		    //grab each entry
+		    //seperate key/values
+		    int ID = (int) entry.getKey();
+		    int quantity = (int) entry.getValue();
 
 	    	//get item from id
 		    StoreItem item = items.get(ID);
