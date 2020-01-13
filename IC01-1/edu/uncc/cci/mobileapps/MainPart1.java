@@ -23,7 +23,7 @@ public class MainPart1 {
         }
 
         Collections.sort(users);
-	    System.out.println("Printing top 10 oldest users:");
+	    System.out.println("Top 10 oldest users:");
 	    for(int i = 0; i < 10; i++){
 		    System.out.println(users.get(i).toString());
 	    }

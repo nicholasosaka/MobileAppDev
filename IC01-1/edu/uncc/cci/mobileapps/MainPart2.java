@@ -42,6 +42,7 @@ public class MainPart2 {
 	    //iterators are fun!
 	    Iterator iterator = list.iterator();
 
+	    System.out.println("Population of States in ascending order:");
 	    while(iterator.hasNext()){
 	    	Map.Entry i = (Map.Entry) iterator.next();
 		    System.out.println(i.getKey() + "\t" + i.getValue());
