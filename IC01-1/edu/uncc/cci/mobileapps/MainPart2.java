@@ -20,24 +20,30 @@ public class MainPart2 {
 		    users.add(new User(str));
 	    }
 
-	    //maps state to integer of how many users are in each state.
-	    Map<String, Integer> map = new HashMap<String, Integer>();
+	    //map creation
+	    HashMap<String, Integer> map = new HashMap<>();
 
 	    //count users
 	    for(User user : users){ //for each user
 	    	if(map.containsKey(user.getState())){   //if the map already contains their state
-	    		int currVal = map.get(user.getState()); //grab current value and add incremented value to map
-	    		map.put(user.getState(), ++currVal);
+	    		map.put(user.getState(), map.get(user.getState()) + 1);
 		    } else {
 			    map.put(user.getState(), 1);    //add state to map
 		    }
 	    }
 
-	    //print map
-	    Iterator statesIterator = map.entrySet().iterator();
-	    while(statesIterator.hasNext()){
-		    Map.Entry e = (Map.Entry) statesIterator.next();
-		    System.out.println(e.getKey() + "\t" + e.getValue());
+
+	    //get all entries of the map as a linkedlist for sorting
+		List<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
+
+	    //sort by values of the key/value entries
+	    list.sort((k, v) -> k.getValue().compareTo(v.getValue()));
+
+	    //iterators are fun!
+	    Iterator iterator = list.iterator();
+
+	    while(iterator.hasNext()){
+		    System.out.println(iterator.next());
 	    }
     }
 }

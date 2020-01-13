@@ -1,6 +1,7 @@
 package edu.uncc.cci.mobileapps;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainPart3 {
     /*
@@ -14,6 +15,15 @@ public class MainPart3 {
     * */
 
     public static void main(String[] args) {
+	    List<User> users = new ArrayList<User>();
+	    List<User> otherUsers = new ArrayList<User>();
 
+	    for (String str : Data.users) {
+		    users.add(new User(str));
+	    }
+
+	    for (String str : Data.otherUsers){
+	    	otherUsers.add(new User(str));
+	    }
     }
 }
