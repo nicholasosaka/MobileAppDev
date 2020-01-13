@@ -1,7 +1,8 @@
 package edu.uncc.cci.mobileapps;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class MainPart3 {
     /*
@@ -15,8 +16,8 @@ public class MainPart3 {
     * */
 
     public static void main(String[] args) {
-	    List<User> users = new ArrayList<User>();
-	    List<User> otherUsers = new ArrayList<User>();
+	    Set<User> users = new HashSet<User>();
+	    Set<User> otherUsers = new HashSet<>();
 
 	    for (String str : Data.users) {
 		    users.add(new User(str));
@@ -25,5 +26,23 @@ public class MainPart3 {
 	    for (String str : Data.otherUsers){
 	    	otherUsers.add(new User(str));
 	    }
+
+	    Set<User> both = new HashSet<User>();
+
+	    for(User u : users){
+	    	if(otherUsers.contains(u)){
+	    		both.add(u);
+		    }
+	    }
+
+
+	    System.out.println("Users that exist in both lists:");
+	    Iterator<User> iterator = both.iterator();
+	    while(iterator.hasNext()){
+	    	User u = (User) iterator.next();
+		    System.out.println(u);
+	    }
+
+
     }
 }
