@@ -25,11 +25,15 @@ public class MainPart2 {
 
 	    //count users
 	    for(User user : users){ //for each user
-	    	if(map.containsKey(user.getState())){   //if the map already contains their state
-	    		map.put(user.getState(), map.get(user.getState()) + 1);
+
+	    	String state = user.getState();
+
+	    	if(map.containsKey(state)){   //if the map already contains their state
+	    		map.put(state, map.get(state) + 1);
 		    } else {
-			    map.put(user.getState(), 1);    //add state to map
+			    map.put(state, 1);    //add state to map
 		    }
+
 	    }
 
 
