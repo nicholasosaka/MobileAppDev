@@ -43,7 +43,8 @@ public class MainPart2 {
 	    Iterator iterator = list.iterator();
 
 	    while(iterator.hasNext()){
-		    System.out.println(iterator.next());
+	    	Map.Entry i = (Map.Entry) iterator.next();
+		    System.out.println(i.getKey() + "\t" + i.getValue());
 	    }
     }
 }
