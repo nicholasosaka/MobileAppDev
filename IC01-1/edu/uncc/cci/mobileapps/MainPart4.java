@@ -2,6 +2,9 @@ package edu.uncc.cci.mobileapps;
 
 //import java.util.HashMap;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainPart4{
     /*
       Question 4
@@ -22,6 +25,8 @@ public class MainPart4{
     */
 
     public static void main(String[] args) {
+
+    	Map<Integer, StoreItem> items = new HashMap<Integer, StoreItem>();
 
     }
 }
