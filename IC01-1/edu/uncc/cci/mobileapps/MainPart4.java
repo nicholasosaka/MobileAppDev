@@ -29,17 +29,48 @@ public class MainPart4{
 
     	Map<Integer, StoreItem> items = new HashMap<Integer, StoreItem>();
 
-    	for(String str : Data.items){
-    		StoreItem item = new StoreItem(str);
+	    for(String str : Data.items){
+		    StoreItem item = new StoreItem(str);
 
-    		items.put(item.getId(), item);
+		    items.put(item.getId(), item);
 	    }
 
-	    Iterator<Map.Entry<Integer, StoreItem>> iterator = items.entrySet().iterator();
-    	while(iterator.hasNext()){
-    		Map.Entry e = (Map.Entry) iterator.next();
-		    System.out.println(e.getValue());
+	    Map<Integer, Integer> cart = new HashMap<Integer, Integer>();
+
+	    for(String str : Data.shoppingCart){
+	    	String[] tokenized = str.split(","); //tokenize shopping cart strings
+
+		    //parse to int
+	    	int ID = Integer.parseInt(tokenized[0]);
+	    	int quantity = Integer.parseInt(tokenized[1]);
+
+	    	//add to cart
+	    	cart.put(ID, quantity);
 	    }
+
+	    //total counter for sum
+	    int total = 0;
+
+	    System.out.format("%-5s%-15s%-16s%-24s%n", "ID", "NAME", "QUANTITY", "PRICE * QUANTITY");
+
+	    //map -> entry set -> iterator
+	    Iterator<Map.Entry<Integer, Integer>> iterator = cart.entrySet().iterator();
+
+	    while(iterator.hasNext()){
+	    	//grab each entry
+	    	Map.Entry entry = iterator.next();
+	    	//seperate key/values
+	    	int ID = (int) entry.getKey();
+	    	int quantity = (int) entry.getValue();
+
+	    	//get item from id
+		    StoreItem item = items.get(ID);
+		    int cost = item.getPrice() * quantity;
+		    System.out.format("%-5d%-15s%-16d$%-24d%n", item.getId(), item.getName(), quantity, cost);
+		    total += cost;
+
+	    }
+	    System.out.println("TOTAL: $" + total);
 
     }
 }
