@@ -16,9 +16,13 @@ public class MainPart3 {
     * */
 
     public static void main(String[] args) {
+
+    	//initialization
 	    Set<User> users = new HashSet<User>();
 	    Set<User> otherUsers = new HashSet<>();
 
+
+	    //population of respective sets
 	    for (String str : Data.users) {
 		    users.add(new User(str));
 	    }
@@ -27,10 +31,11 @@ public class MainPart3 {
 	    	otherUsers.add(new User(str));
 	    }
 
+	    //set to contain users from both sets
 	    Set<User> both = new HashSet<User>();
 
 	    for(User u : users){
-	    	if(otherUsers.contains(u)){
+	    	if(otherUsers.contains(u)){ //if otherUsers contains a given user from the users set, it must be bidirectional.
 	    		both.add(u);
 		    }
 	    }
