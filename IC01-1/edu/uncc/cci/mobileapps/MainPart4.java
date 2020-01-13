@@ -3,6 +3,7 @@ package edu.uncc.cci.mobileapps;
 //import java.util.HashMap;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class MainPart4{
@@ -27,6 +28,18 @@ public class MainPart4{
     public static void main(String[] args) {
 
     	Map<Integer, StoreItem> items = new HashMap<Integer, StoreItem>();
+
+    	for(String str : Data.items){
+    		StoreItem item = new StoreItem(str);
+
+    		items.put(item.getId(), item);
+	    }
+
+	    Iterator<Map.Entry<Integer, StoreItem>> iterator = items.entrySet().iterator();
+    	while(iterator.hasNext()){
+    		Map.Entry e = (Map.Entry) iterator.next();
+		    System.out.println(e.getValue());
+	    }
 
     }
 }
