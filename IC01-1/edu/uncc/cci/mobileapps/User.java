@@ -1,5 +1,11 @@
 package edu.uncc.cci.mobileapps;
 
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: User.java
+ */
+
 import java.util.Objects;
 
 class User implements Comparable<User>{

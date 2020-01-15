@@ -1,5 +1,11 @@
 package edu.uncc.cci.mobileapps;
 
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: MainPart1.java
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

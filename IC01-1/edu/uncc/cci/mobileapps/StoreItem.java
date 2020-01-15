@@ -1,5 +1,11 @@
 package edu.uncc.cci.mobileapps;
 
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: StoreItem.java
+ */
+
 public class StoreItem {
 
 	private String name;

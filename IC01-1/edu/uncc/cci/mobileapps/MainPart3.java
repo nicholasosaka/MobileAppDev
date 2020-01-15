@@ -1,5 +1,11 @@
 package edu.uncc.cci.mobileapps;
 
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: MainPart3.java
+ */
+
 import java.util.HashSet;
 import java.util.Set;
 

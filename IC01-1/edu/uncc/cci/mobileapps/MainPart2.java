@@ -1,5 +1,11 @@
 package edu.uncc.cci.mobileapps;
 
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: MainPart2.java
+ */
+
 import java.util.*;
 
 public class MainPart2 {

@@ -1,6 +1,10 @@
 package edu.uncc.cci.mobileapps;
 
-//import java.util.HashMap;
+/*
+ASSIGNMENT#: ICA1
+STUDENT NAME: Nicholas Osaka
+FILE NAME: MainPart4.java
+ */
 
 import java.util.HashMap;
 import java.util.Map;
