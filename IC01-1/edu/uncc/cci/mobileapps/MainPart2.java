@@ -41,7 +41,12 @@ public class MainPart2 {
 		List<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
 
 	    //sort by values of the key/value entries
-	    list.sort((k, v) -> k.getValue().compareTo(v.getValue()));
+	    Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+		    @Override
+		    public int compare(Map.Entry<String, Integer> i, Map.Entry<String, Integer> j) {
+			    return i.getValue().compareTo(j.getValue());
+		    }
+	    });
 
 	    //iterators are fun!
 	    Iterator iterator = list.iterator();
