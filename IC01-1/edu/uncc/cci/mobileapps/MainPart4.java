@@ -55,6 +55,7 @@ public class MainPart4{
 	    int total = 0;
 
 	    System.out.format("%-5s%-15s%-16s%-24s%n", "ID", "NAME", "QUANTITY", "PRICE * QUANTITY");
+	    System.out.println("----------------------------------------------------");
 
 	    //map -> entry set -> iterator
 
