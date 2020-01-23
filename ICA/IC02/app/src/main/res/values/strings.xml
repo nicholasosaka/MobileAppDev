@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InClass02</string>
+    <string name="title">Body Mass Index (BMI)</string>
+    <string name="underweight_prompt">You are Underweight</string>
+    <string name="normal_prompt">You are Normal</string>
+    <string name="overweight_prompt">You are Overweight</string>
+    <string name="obese_prompt">You are Obese</string>
+</resources>
