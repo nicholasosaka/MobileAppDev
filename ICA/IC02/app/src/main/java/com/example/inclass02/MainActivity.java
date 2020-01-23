@@ -1,3 +1,10 @@
+/*
+    In Class 02
+    MainActivity.java
+    Nicholas Osaka
+    Team Member: Alexandria Benedict
+ */
+
 package com.example.inclass02;
 
 import androidx.appcompat.app.AppCompatActivity;
