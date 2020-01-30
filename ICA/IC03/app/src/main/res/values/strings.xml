@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">IC03</string>
+    <string name="app_name">InClass03</string>
+    <string name="select_avi_label">Select Avatar</string>
+    <string name="save_button_label">Save</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
 </resources>
