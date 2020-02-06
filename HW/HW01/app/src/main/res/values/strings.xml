@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">HW01</string>
+    <string name="app_name">IC04</string>
+    <string name="select_complexity_label">Select Complexity</string>
+    <string name="seek_count_">0 Times</string>
+    <string name="mimimum_value_label">Minimum:</string>
+    <string name="maximum_value_label">Maximum:</string>
+    <string name="average_value_label">Average:</string>
+    <string name="average_value" />
+    <string name="maximum_value" />
+    <string name="minimum_value" />
+    <string name="button_label">Generate Number Async Task</string>
 </resources>
