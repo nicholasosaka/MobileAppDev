@@ -1,9 +1,8 @@
 package com.example.hw01;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +11,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     TextView minLabel;
     TextView maxLabel;
     TextView avgLabel;
+
+    ExecutorService threadPool;
+    static Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         minLabel = findViewById(R.id.tv_minimum);
         maxLabel = findViewById(R.id.tv_maximum);
         avgLabel = findViewById(R.id.tv_average);
-
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -56,107 +62,71 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        threadPool = Executors.newFixedThreadPool(2);
+
+        handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                Log.d("HANDLER", "Message Received: " + msg);
+                switch(msg.what){
+                    case HeavyWork.STATUS_START:
+                        Log.d("HANDLER", "Starting...");
+
+                        findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);
+                        findViewById(R.id.button).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_average_label).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_average).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_maximum).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_maximum_label).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_minimum).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_minimum_label).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_complexity_label).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.tv_seek_label).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.sb_complexity).setVisibility(View.INVISIBLE);
+
+
+                        break;
+                    case HeavyWork.STATUS_FINISH:
+                        Log.d("HANDLER", "Stopping...");
+
+                        //cast message object back to double array
+                        Map<String, Double> map = (Map<String, Double>) msg.obj;
+
+                        ((TextView) findViewById(R.id.tv_minimum)).setText(map.get(HeavyWork.MIN) +"");
+                        ((TextView) findViewById(R.id.tv_average)).setText(map.get(HeavyWork.AVG) +"");
+                        ((TextView) findViewById(R.id.tv_maximum)).setText(map.get(HeavyWork.MAX) +"");
+                        findViewById(R.id.progress_bar).setVisibility(View.INVISIBLE);
+
+
+                        findViewById(R.id.button).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_average_label).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_average).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_maximum).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_maximum_label).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_minimum).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_minimum_label).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_complexity_label).setVisibility(View.VISIBLE);
+                        findViewById(R.id.tv_seek_label).setVisibility(View.VISIBLE);
+                        findViewById(R.id.sb_complexity).setVisibility(View.VISIBLE);
+
+                        break;
+                }
+
+                return false;
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(seekBar.getProgress() != 0){
-                    new GetNumbers().execute(seekBar.getProgress());
+                int seekBarValue = seekBar.getProgress();
+                if(seekBarValue != 0){
+                    threadPool.execute(new HeavyWork(seekBarValue));
                 } else {
                     Toast.makeText(MainActivity.this, "Please select a non zero value", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-    }
-
-    class GetNumbers extends AsyncTask<Integer, Void, ArrayList<Double>>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.d("IC04", "Starting HeavyWork");
-
-            findViewById(R.id.button).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_minimum_label).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_minimum).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_maximum_label).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_maximum).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_average_label).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_average).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_complexity_label).setVisibility(View.INVISIBLE);
-            findViewById(R.id.tv_seek_label).setVisibility(View.INVISIBLE);
-            findViewById(R.id.sb_complexity).setVisibility(View.INVISIBLE);
-
-
-            progressBar.setVisibility(ProgressBar.VISIBLE);
-        }
-
-
-        @Override
-        protected ArrayList<Double> doInBackground(Integer... integers) {
-            return HeavyWork.getArrayNumbers(integers[0]);
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Double> doubles) {
-            super.onPostExecute(doubles);
-            Log.d("IC04", "Finished HeavyWork");
-            progressBar.setVisibility(ProgressBar.INVISIBLE);
-
-            double min = findMin(doubles);
-            double max = findMax(doubles);
-            double avg = findAvg(doubles);
-
-            minLabel.setText(min+"");
-            maxLabel.setText(max+"");
-            avgLabel.setText(avg+"");
-
-            findViewById(R.id.button).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_minimum_label).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_minimum).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_maximum_label).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_maximum).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_average_label).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_average).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_complexity_label).setVisibility(View.VISIBLE);
-            findViewById(R.id.tv_seek_label).setVisibility(View.VISIBLE);
-            findViewById(R.id.sb_complexity).setVisibility(View.VISIBLE);
-
-
-        }
-
-
-    }
-
-    private double findAvg(ArrayList<Double> doubles) {
-        double avg = 0.0;
-
-        for(double d : doubles){
-            avg += d;
-        }
-
-        avg /= doubles.size();
-
-        return avg;
-    }
-
-    private double findMax(ArrayList<Double> doubles) {
-        double max = Double.MIN_VALUE;
-
-        for(double d : doubles){
-            if(d > max) max = d;
-        }
-
-        return max;
-    }
-
-    private double findMin(ArrayList<Double> doubles) {
-        double min = Double.MAX_VALUE;
-
-        for(double d : doubles){
-            if(d < min) min = d;
-        }
-
-        return min;
     }
 }

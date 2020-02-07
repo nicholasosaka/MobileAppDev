@@ -8,5 +8,5 @@
     <string name="average_value" />
     <string name="maximum_value" />
     <string name="minimum_value" />
-    <string name="button_label">Generate Number Async Task</string>
+    <string name="button_label">Generate Number Thread</string>
 </resources>
