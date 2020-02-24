@@ -30,4 +30,6 @@ dependencies {
     //picasso for loading images
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
 }

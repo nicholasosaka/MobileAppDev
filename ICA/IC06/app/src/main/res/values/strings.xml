@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">IC06</string>
+    <string name="news_api_key">bb2994c3e8424febb50ff993857f4667</string>
+    <string name="button_label">Select</string>
+    <string name="category_label_text">Show Categories</string>
+    <string name="title" />
+    <string name="publishedAt" />
+    <string name="description" />
+    <string name="counter" />
 </resources>
