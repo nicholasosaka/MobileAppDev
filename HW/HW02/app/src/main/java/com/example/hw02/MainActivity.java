@@ -1,12 +1,14 @@
 package com.example.hw02;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -32,6 +34,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
+    static final String TRACK_KEY = "TRACK";
     private String TAG = "HW02";
 
     Button searchButton;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     String baseURL = "https://itunes.apple.com/search";
 
     ArrayList<Track> tracks;
+
+    TrackAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 tracks = new ArrayList<>();
-                TrackAdapter adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, tracks);
+                adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, tracks);
                 resultContainer.setAdapter(adapter);
 
             }
@@ -132,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        resultContainer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Track track = tracks.get(position);
+
+                Intent toDisplayDetails = new Intent(MainActivity.this, DisplayDetailsActivity.class);
+
+                toDisplayDetails.putExtra(TRACK_KEY, track);
+
+                startActivity(toDisplayDetails);
+            }
+        });
+
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -140,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
                 sort(tracks);
 
-                TrackAdapter adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, tracks);
+                adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, tracks);
                 resultContainer.setAdapter(adapter);
 
             }
@@ -253,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
 
             sort(retrievedTracks);
 
-            TrackAdapter adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, retrievedTracks);
+            adapter = new TrackAdapter(MainActivity.this, R.layout.track_item, retrievedTracks);
 
             resultContainer.setAdapter(adapter);
 

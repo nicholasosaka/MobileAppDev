@@ -9,4 +9,11 @@
     <string name="price_text_label">Price</string>
     <string name="date_text_label">Date</string>
     <string name="result_label">Results</string>
+    <string name="finish_label">Finish</string>
+    <string name="track_label">Track:</string>
+    <string name="genre_label">Genre:</string>
+    <string name="artist_label">Artist:</string>
+    <string name="album_label">Album:</string>
+    <string name="track_price_label">Track Price:</string>
+    <string name="album_price_label">Album Price:</string>
 </resources>

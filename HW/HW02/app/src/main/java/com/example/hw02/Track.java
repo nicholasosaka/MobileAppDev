@@ -3,7 +3,9 @@ package com.example.hw02;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Track {
+import java.io.Serializable;
+
+public class Track implements Serializable {
     private String name;
     private String genre;
     private String artist;
