@@ -1,4 +1,9 @@
 package com.example.hw02;
+/*
+    HW02
+    Track.java
+    Nicholas Osaka & Alexandria Benedict
+ */
 
 import org.json.JSONException;
 import org.json.JSONObject;

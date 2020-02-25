@@ -1,5 +1,9 @@
 package com.example.hw02;
-
+/*
+    HW02
+    MainActivity.java
+    Nicholas Osaka & Alexandria Benedict
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;

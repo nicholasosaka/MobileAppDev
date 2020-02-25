@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+/*
+    HW02
+    TrackAdapter.java
+    Nicholas Osaka & Alexandria Benedict
+ */
 
 import java.util.List;
 

@@ -1,4 +1,9 @@
 package com.example.hw02;
+/*
+    HW02
+    DisplayDetailsActivity.java
+    Nicholas Osaka & Alexandria Benedict
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
