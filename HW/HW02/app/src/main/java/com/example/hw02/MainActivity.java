@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     TrackAdapter adapter;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         tracks = new ArrayList<>();
         toggleStatus = true;
+
+        progressBar = findViewById(R.id.progressBar);
 
         resultContainer = findViewById(R.id.list_view);
 
@@ -266,8 +271,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+
+        }
+
+        @Override
         protected void onPostExecute(ArrayList<Track> retrievedTracks) {
             super.onPostExecute(retrievedTracks);
+            progressBar.setVisibility(View.INVISIBLE);
+
 
             sort(retrievedTracks);
 
