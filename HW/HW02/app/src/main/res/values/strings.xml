@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">HW02</string>
+    <string name="search_bar_value" />
+    <string name="seek_bar_tv_default">Limit: 10</string>
+    <string name="reset_button_value">Reset</string>
+    <string name="search_button_value">Search</string>
+    <string name="search_bar_hint">Search Term</string>
+    <string name="sortby_label">Sort by:</string>
+    <string name="price_text_label">Price</string>
+    <string name="date_text_label">Date</string>
+    <string name="result_label">Results</string>
 </resources>
