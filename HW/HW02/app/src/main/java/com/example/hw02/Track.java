@@ -41,6 +41,18 @@ public class Track {
         this.date = date;
     }
 
+    public int getYear(){
+        return Integer.parseInt(date.split("-")[2]);
+    }
+
+    public int getDay(){
+        return Integer.parseInt(date.split("-")[1]);
+    }
+
+    public int getMonth(){
+        return Integer.parseInt(date.split("-")[0]);
+    }
+
     public String getDate() {
         return date;
     }
@@ -73,11 +85,8 @@ public class Track {
     public String toString() {
         return "Track{" +
                 "name='" + name + '\'' +
-                ", genre='" + genre + '\'' +
                 ", artist='" + artist + '\'' +
-                ", album='" + album + '\'' +
                 ", trackPrice=" + trackPrice +
-                ", albumPrice=" + albumPrice +
                 ", date='" + date + '\'' +
                 '}';
     }
