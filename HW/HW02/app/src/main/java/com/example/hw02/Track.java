@@ -11,6 +11,7 @@ public class Track {
     private double trackPrice;
     private double albumPrice;
     private String date;
+    private String albumArtURL;
 
     public Track(JSONObject trackObject) {
         try {
@@ -25,6 +26,7 @@ public class Track {
             String[] datePieces = raw.substring(0,raw.indexOf("T")).split("-");
 
             this.date = datePieces[1] + "-" + datePieces[2] + "-" + datePieces[0];
+            this.albumArtURL = trackObject.getString("artworkUrl100");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -39,6 +41,10 @@ public class Track {
         this.trackPrice = trackPrice;
         this.albumPrice = albumPrice;
         this.date = date;
+    }
+
+    public String getAlbumArtURL() {
+        return albumArtURL;
     }
 
     public int getYear(){
