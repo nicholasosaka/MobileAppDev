@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IC07</string>
+    <string name="welcome_tv_label">Welcome to Trivia App</string>
+    <string name="progress_status_label">Loading Trivia</string>
+    <string name="start_button_label">Start Trivia</string>
+    <string name="trivia_ready_label">Trivia Ready</string>
 </resources>
