@@ -4,4 +4,15 @@
     <string name="progress_status_label">Loading Trivia</string>
     <string name="start_button_label">Start Trivia</string>
     <string name="trivia_ready_label">Trivia Ready</string>
+    <string name="question_number_label">Q1</string>
+    <string name="timer_label">Time Left: 120 Seconds</string>
+    <string name="question_text">Question Text Here Lorem Ipsum</string>
+    <string name="quit_button_text">Quit</string>
+    <string name="next_button">Next</string>
+    <string name="question_layout_text">Question Text Here</string>
+    <string name="trivia_stats_header">Trivia Stats</string>
+    <string name="correct_label">Correct Answers</string>
+    <string name="correct_percent_text">XX%</string>
+    <string name="try_again_text">Try again and see if you can get them all correct!</string>
+    <string name="try_again_button">Try Again</string>
 </resources>

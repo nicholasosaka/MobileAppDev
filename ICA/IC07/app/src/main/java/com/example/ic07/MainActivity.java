@@ -3,6 +3,7 @@ package com.example.ic07;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -25,10 +26,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String QUESTIONS_KEY = "QUESTIONS_KEY";
     private static final String TAG = "IC07";
+    private static ArrayList<Question> questions;
     TextView progressStatus;
     ProgressBar progressBar;
     Button start_button;
@@ -50,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
         new GetJSONData().execute(url);
 
+        start_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toTriviaQuestions = new Intent(MainActivity.this, Trivia.class);
+                toTriviaQuestions.putExtra(QUESTIONS_KEY, questions);
+                Log.d(TAG, "Placed extra: " + Arrays.toString(questions.toArray()));
+
+                startActivity(toTriviaQuestions);
+            }
+        });
 
     }
 
@@ -79,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject o = (JSONObject) jsonQuestions.get(i);
                         Question q = new Question(o);
                         Log.d(TAG, "Added " + q);
+                        questions.add(q);
                     }
 
                     dataRetrieved = true;
@@ -103,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 banner.setVisibility(View.VISIBLE);
 
                 progressStatus.setText(R.string.trivia_ready_label);
+
+                MainActivity.questions = questions;
             }
         }
     }

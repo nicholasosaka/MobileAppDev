@@ -1,12 +1,16 @@
 package com.example.ic07;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class Question {
+class Question implements Serializable {
+    private static final String TAG = "IC07-QUESTION";
     private int id;
     private String text;
     private String imageURL;
@@ -36,9 +40,10 @@ class Question {
 
         try{
             this.imageURL = json.getString("image");
+            Log.d(TAG, "Found image for question #" + this.id);
         } catch (JSONException e) {
-            e.printStackTrace();
-            this.imageURL = null;
+            Log.d(TAG, "No image found for question #" + this.id);
+            this.imageURL = "0";
         }
     }
 
