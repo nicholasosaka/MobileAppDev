@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">HW03</string>
+    <string name="current_city_text">Current City Not Set</string>
+    <string name="set_current_city_button_text">Set Current City</string>
+    <string name="city_name_et_hint">City Name</string>
+    <string name="country_name_et_hint">Country</string>
+    <string name="search_city_button_text">Search City</string>
+    <string name="no_cities_text">There are no cities to display.\nSearch the city from the search box and save.</string>
+    <string name="current_city_temperature_text">Temperature: XX.XF</string>
+    <string name="current_city_updated_time">Updated: XXXXXXXXXXXX ago</string>
+    <string name="alert_dialog_positive">OK</string>
+    <string name="alert_dialog_negative">Cancel</string>
+    <string name="api_key">PGqDyZPAzA1nZAuLxjibgaNhg8NZFUaa</string>
+    <string name="conditionHeaderText">Condition</string>
+    <string name="day">Day</string>
+    <string name="night">Night</string>
+    <string name="detailsLink">Click here for more details</string>
+    <string name="saveButtonText">Save City</string>
+    <string name="setCurrentButton">Set as Current</string>
 </resources>
