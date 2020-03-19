@@ -10,4 +10,9 @@
     <string name="Name">Name</string>
     <string name="RepeatPassword">Repeat Password</string>
     <string name="Cancel">Cancel</string>
+    <string name="OK">OK</string>
+    <string name="delete">Delete</string>
+    <string name="Title">Title</string>
+    <string name="Note">Note</string>
+    <string name="Add">Add</string>
 </resources>

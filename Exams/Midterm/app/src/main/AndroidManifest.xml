@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".AddNoteActivity"></activity>
+        <activity android:name=".DisplayNoteActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".MyNotesActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
