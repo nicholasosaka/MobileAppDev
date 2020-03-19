@@ -3,6 +3,8 @@ package com.example.midterm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -56,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.loginPassET);
         loginBtn = findViewById(R.id.loginButton);
         registerBtn = findViewById(R.id.loginRegisterButton);
+
+        if(isConnected()){
+            Toast.makeText(this, "Connected", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Not Connected", Toast.LENGTH_LONG).show();
+        }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +139,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = null;
+        if (connectivityManager != null) {
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+        }
+        return networkInfo != null && networkInfo.isConnected() &&
+                         (networkInfo.getType() == ConnectivityManager.TYPE_WIFI
+                         || networkInfo.getType() == ConnectivityManager.TYPE_MOBILE);
     }
 
 }
