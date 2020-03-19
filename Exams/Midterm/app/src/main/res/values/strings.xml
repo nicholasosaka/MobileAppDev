@@ -7,4 +7,7 @@
     <string name="baseURL">http://ec2-18-191-172-10.us-east-2.compute.amazonaws.com:3000/api/</string>
     <string name="preference_file_key">SHARED_PREF_KEY</string>
     <string name="authToken">AUTH_TOKEN</string>
+    <string name="Name">Name</string>
+    <string name="RepeatPassword">Repeat Password</string>
+    <string name="Cancel">Cancel</string>
 </resources>

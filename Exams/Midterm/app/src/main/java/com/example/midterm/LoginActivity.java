@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,18 +22,16 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import okio.BufferedSink;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "MIDTERM_LOGINACTIVITY";
+    private static final String TAG = "MIDTERM_LOGIN";
     EditText emailET;
     EditText passwordET;
     Button loginBtn;
@@ -47,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         setTitle("Login");
 
         handler = new Handler(Looper.getMainLooper());
@@ -92,6 +88,8 @@ public class LoginActivity extends AppCompatActivity {
                                 JSONObject root = new JSONObject(responseBody.string());
                                 String token = root.getString("token");
 
+                                Log.d(TAG, "onResponse: login token: " + token);
+
                                 SharedPreferences.Editor editor = sharedPref.edit();
                                 editor.putString(getString(R.string.authToken), token);
                                 editor.commit();
@@ -101,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                                     public void run() {
                                         Intent toMyNotes = new Intent(LoginActivity.this, MyNotesActivity.class);
                                         Toast.makeText(context, "Logging in...", Toast.LENGTH_SHORT).show();
+                                        startActivity(toMyNotes);
+                                        finish();
                                     }
                                 });
                             } else {
@@ -118,6 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(toRegister);
+                Log.d(TAG, "onClick: sending to register activity");
+                finish();
             }
         });
 
