@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "452718803940",
+    "firebase_url": "https://ica12-b5e78.firebaseio.com",
+    "project_id": "ica12-b5e78",
+    "storage_bucket": "ica12-b5e78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452718803940:android:5ee20288a325041a04e5f1",
+        "android_client_info": {
+          "package_name": "com.example.ic12"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452718803940-i5i9pvqvqohij2o6sf83fnkge22fcl3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOdt7iTq6FbIjGz-f6YtXrHNpvpZVuYeA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452718803940-i5i9pvqvqohij2o6sf83fnkge22fcl3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
